@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faVideo, faShoppingCart, faQuestionCircle, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faVideo, faShoppingCart, faQuestionCircle, faTv, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
@@ -15,6 +15,11 @@ const Navbar = () => {
         <li>
           <Link to="/movies">
             <FontAwesomeIcon icon={faVideo} /> Movies
+          </Link>
+        </li>
+        <li>
+          <Link to="/shows">
+            <FontAwesomeIcon icon={faTv} /> TV Shows
           </Link>
         </li>
         <li>

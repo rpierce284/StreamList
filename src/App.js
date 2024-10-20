@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './Components/Navbar'; // Make sure this is a default export
-import StreamList from './Components/StreamList'; // Make sure this is a default export
-import Movies from './Components/Movies'; // Make sure this is a default export
-import Cart from './Components/Cart'; // Make sure this is a default export
-import About from './Components/About'; // Make sure this is a default export
-import Login from './Components/Login'; // Make sure this is a default export
-import Signup from './Components/Signup'; // Make sure this is a default export
+import Navbar from './Components/Navbar';
+import StreamList from './Components/StreamList';
+import Movies from './Components/Movies';
+import Shows from './Components/Shows'; // New Shows component
+import Cart from './Components/Cart';
+import About from './Components/About';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<StreamList />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/shows" element={<Shows />} /> {/* Add Shows route */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
@@ -27,6 +29,3 @@ function App() {
 }
 
 export default App;
-
-
-

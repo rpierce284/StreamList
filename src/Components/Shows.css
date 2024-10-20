@@ -1,0 +1,48 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Shows List Styling */
+  .shows-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  /* Show Item Styling */
+  .shows-list li {
+    list-style-type: none;
+    flex-basis: calc(20% - 20px); /* 5 items per row */
+    max-width: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Show Poster Styling */
+  .shows-list img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Add to Cart Button Styling */
+  .add-to-cart-button {
+    padding: 10px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #005f99;
+  }
+  

@@ -152,3 +152,33 @@ footer {
 .hidden {
   display: none;
 }
+
+/* Completed Entries Styling */
+li.completed {
+  text-decoration: line-through;
+}
+
+/* Edit Input */
+.edit-input {
+  margin-right: 10px;
+}
+
+/* Save Button Styling */
+.save-button {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+/* Add margin between buttons */
+.entries-list button {
+  margin-right: 10px; /* Adds space between buttons horizontally */
+  margin-bottom: 5px; /* Adds vertical space between buttons */
+}
