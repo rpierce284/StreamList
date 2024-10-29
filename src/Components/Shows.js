@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import './Shows.css'; 
+import './Shows.css'; // Ensure the correct styling
 
-const Shows = () => {
+const Shows = ({ cart, setCart }) => {
   const [popularShows, setPopularShows] = useState([]);
   const [topRatedShows, setTopRatedShows] = useState([]);
-  const [cart, setCart] = useState([]);
 
   useEffect(() => {
+    // Fetch Popular Shows from TMDb
     const fetchPopularShows = async () => {
       try {
         const response = await axios.get(
@@ -24,6 +24,7 @@ const Shows = () => {
       }
     };
 
+    // Fetch Top Rated Shows from TMDb
     const fetchTopRatedShows = async () => {
       try {
         const response = await axios.get(
@@ -43,11 +44,13 @@ const Shows = () => {
     fetchTopRatedShows();
   }, []);
 
-  const handleAddToCart = (show, price) => {
-    const newCartItem = { ...show, price };
-    setCart([...cart, newCartItem]);
-    alert(`${show.name} added to cart for $${price}`);
+  // Function to handle adding shows to the cart
+  const handleAddToCart = (item, price) => {
+    const newItem = { ...item, price, id: uuidv4() };
+    setCart((prevCart) => [...prevCart, newItem]);
+    alert(`${item.title || item.name} added to cart for $${price}`);
   };
+  
 
   return (
     <div className="shows-container">

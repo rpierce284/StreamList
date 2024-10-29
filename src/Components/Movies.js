@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'; 
-import './Movies.css'; 
+import { v4 as uuidv4 } from 'uuid'; // Import UUID package
+import './Movies.css'; // Import the Movies.css file for styling
 
-const Movies = () => {
+const Movies = ({ cart, setCart }) => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [cart, setCart] = useState([]); 
 
   useEffect(() => {
+    // Fetch popular movies from TMDb API
     const fetchPopularMovies = async () => {
       try {
         const response = await axios.get(
@@ -16,7 +16,7 @@ const Movies = () => {
         );
         const moviesWithUUID = response.data.results.map(movie => ({
           ...movie,
-          uuid: uuidv4()
+          uuid: uuidv4() // Assign UUID to each movie
         }));
         setPopularMovies(moviesWithUUID);
       } catch (error) {
@@ -24,6 +24,7 @@ const Movies = () => {
       }
     };
 
+    // Fetch top-rated movies from TMDb API
     const fetchTopRatedMovies = async () => {
       try {
         const response = await axios.get(
@@ -31,7 +32,7 @@ const Movies = () => {
         );
         const moviesWithUUID = response.data.results.map(movie => ({
           ...movie,
-          uuid: uuidv4()
+          uuid: uuidv4() // Assign UUID to each movie
         }));
         setTopRatedMovies(moviesWithUUID);
       } catch (error) {
@@ -43,17 +44,20 @@ const Movies = () => {
     fetchTopRatedMovies();
   }, []);
 
-  const handleAddToCart = (movie, price) => {
-    const newCartItem = { ...movie, price };
-    setCart([...cart, newCartItem]);
-    alert(`${movie.title} added to cart for $${price}`);
+  // Function to handle adding movies to the cart with subscription pricing
+  const handleAddToCart = (item, price) => {
+    const newItem = { ...item, price, id: uuidv4() };
+    setCart((prevCart) => [...prevCart, newItem]);
+    alert(`${item.title || item.name} added to cart for $${price}`);
   };
+  
 
   return (
     <div className="movies-container">
+      {/* Popular Movies Section */}
       <h1>Popular Movies</h1>
       <ul className="movies-list">
-        {popularMovies.map(movie => (
+        {popularMovies.map((movie) => (
           <li key={movie.uuid} className="movie-item">
             <h2>{movie.title}</h2>
             <img
@@ -61,7 +65,7 @@ const Movies = () => {
               alt={movie.title}
               className="movie-poster"
             />
-            <p>$5.99</p>
+            <p>$5.99</p> {/* Display price for popular movies */}
             <button
               className="add-to-cart-button"
               onClick={() => handleAddToCart(movie, 5.99)}
@@ -72,9 +76,10 @@ const Movies = () => {
         ))}
       </ul>
 
+      {/* Top Rated Movies Section */}
       <h1>Top Rated Movies</h1>
       <ul className="movies-list">
-        {topRatedMovies.map(movie => (
+        {topRatedMovies.map((movie) => (
           <li key={movie.uuid} className="movie-item">
             <h2>{movie.title}</h2>
             <img
@@ -82,7 +87,7 @@ const Movies = () => {
               alt={movie.title}
               className="movie-poster"
             />
-            <p>$3.99</p>
+            <p>$3.99</p> {/* Display price for top-rated movies */}
             <button
               className="add-to-cart-button"
               onClick={() => handleAddToCart(movie, 3.99)}

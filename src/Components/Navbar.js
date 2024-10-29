@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faVideo, faShoppingCart, faQuestionCircle, faTv, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <nav>
       <ul>
@@ -24,7 +24,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/cart">
-            <FontAwesomeIcon icon={faShoppingCart} /> Cart
+            <FontAwesomeIcon icon={faShoppingCart} /> Cart ({cart})
           </Link>
         </li>
         <li>
